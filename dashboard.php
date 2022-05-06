@@ -20,12 +20,23 @@
                 <p class="text-dark fw-bold m-0 pl-3" style="font-size:20px;">Klinik Dokter Ida</p>
             </div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="dashboard.php?tab=pasien" class="text-decoration-none">
             <div class="nav-menu">
                 <div class="nav-list py-2">
                     <div class="nav-item position-relative d-flex align-items-center pl-1">
                         <i class="fa-solid fa-hospital-user" style="font-size:15px; color: black"></i>
                         <p class="text-dark fw-bold m-0 pl-3">Pasien
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="dashboard.php?tab=pendaftaran" class="text-decoration-none">
+            <div class="nav-menu">
+                <div class="nav-list py-2">
+                    <div class="nav-item position-relative d-flex align-items-center pl-1">
+                        <i class="fa-solid fa-address-card" style="font-size:15px; color: black"></i>
+                        <p class="text-dark fw-bold m-0 pl-3">Pendaftaran
                         </p>
                     </div>
                 </div>
@@ -102,7 +113,7 @@
                 <div class="nav-list py-2">
                     <div class="nav-item position-relative d-flex align-items-center pl-1">
                         <i class="fa-solid fa-truck-medical" style="font-size:15px; color: black"></i>
-                        <p class="text-dark fw-bold m-0 pl-3">IGD
+                        <p class="text-dark fw-bold m-0 pl-3">UGD
                         </p>
                     </div>
                 </div>
@@ -132,7 +143,7 @@
         </a>
     </section>
     <section id="content" class="position-relative">
-        <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <nav class="navbar navbar-dark bg-dark justify-content-between mb-4">
             <a class="navbar-brand" style="color:white;">Dashboard</a>
             <div class="dropdown">
                 <button class="btn btn-light my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-shield-halved pr-3"></i>Admin</button>
@@ -141,14 +152,16 @@
                 </div>
             </div>
         </nav>
-        <?php
-        if (isset($_GET["tab"])) {
-            $file = $_GET["tab"];
-            require "$file.php";
-        } else {
-            require "menu.html";
-        }
-        ?>
+        <div class="postion-relative px-3">
+            <?php
+            if (isset($_GET["tab"])) {
+                $file = $_GET["tab"];
+                require "$file.html";
+            } else {
+                require "menu.html";
+            }
+            ?>
+        </div>
     </section>
     <script src="https://kit.fontawesome.com/1f83e5d847.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
