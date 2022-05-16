@@ -142,10 +142,37 @@
                 </div>
             </div>
         </a>
+        <div class="nav-list py-2">
+            <div class="nav-item position-relative d-flex align-items-center pl-1">
+                <i class="fa-solid fa-book" style="font-size:15px; color: black"></i>
+                <p class="text-black fw-bold m-0 pl-3">Laporan</p>
+                <i class="fa-solid fa-angle-down ml-auto mr-1" style="color: black"></i>
+            </div>
+            <div class="nav-item-dropdown bg-white px-3 py-2 mt-2 hide border border-1">
+                <a href="dashboard.php?tab=lapPasien" class="menu-dropdown d-block">Laporan Pasien</a>
+                <a href="dashboard.php?tab=lapDokter" class="menu-dropdown d-block">Laporan Dokter</a>
+                <a href="dashboard.php?tab=lapPoliklinik" class="menu-dropdown d-block">Laporan Poliklinik</a>
+                <a href="dashboard.php?tab=lapDiagnosa" class="menu-dropdown d-block">Laporan Diagnosa</a>
+                <a href="dashboard.php?tab=lapTindakan" class="menu-dropdown d-block">Laporan Tindakan</a>
+                <a href="dashboard.php?tab=lapPendaftaran" class="menu-dropdown d-block">Laporan Pendaftaran</a>
+                <a href="dashboard.php?tab=lapKamar" class="menu-dropdown d-block">Laporan Kamar</a>
+                <a href="dashboard.php?tab=lapPemeriksaan" class="menu-dropdown d-block">Laporan Pemeriksaan</a>
+                <a href="dashboard.php?tab=lapRajal" class="menu-dropdown d-block">Laporan Rawat Jalan</a>
+                <a href="dashboard.php?tab=lapRanap" class="menu-dropdown d-block">Laporan Rawat Inap</a>
+                <a href="dashboard.php?tab=lapUgd" class="menu-dropdown d-block">Laporan UGD</a>
+            </div>
+        </div>
     </section>
     <section id="content" class="position-relative">
         <nav class="navbar navbar-dark bg-dark justify-content-between mb-4">
-            <a class="navbar-brand" style="color:white;">Dashboard</a>
+            <?php
+                if(isset($_GET['tab'])){
+                    $tab = $_GET['tab'];
+                } else {
+                    $tab = 'Dashboard';
+                }
+            ?>
+            <a class="navbar-brand" style="color:white;"><?= $tab ?></a>
             <div class="dropdown">
                 <button class="btn btn-light my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-shield-halved pr-3"></i>Admin</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
