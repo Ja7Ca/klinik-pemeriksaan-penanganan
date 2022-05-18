@@ -5,8 +5,18 @@ if(isset($_GET['page'])){
 } else {
     $page = "0";
 }
-$data = query("select * from pasien limit 10 offset $page");
+if(isset($_POST['submit'])&& $_POST['key'] !== ""){
+    $data = query("select * from pasien where no_rm like '%{$_POST['key']}%' or nama_pasien like '%{$_POST['key']}%' or alamat like '%{$_POST['key']}%'");
+    $total = count($data);
+} else {
+    $total = count(query("select * from pasien"));
+    $data = query("select * from pasien limit 10 offset $page");
+}
 ?>
+<form method="post" class="text-right">
+    <input type="text" name="key" placeholder="'NO RM', 'Nama', 'Alamat'">
+    <input type="submit" name="submit" value="Cari" class="btn btn-primary">
+</form>
 <table class="table table-striped mt-5">
     <thead>
         <tr>
@@ -37,7 +47,6 @@ $data = query("select * from pasien limit 10 offset $page");
 </table>
 <div class="page position-relative d-flex justify-content-center">
     <?php
-        $total = count(query("select * from pasien "));
         $total = floor($total/10)+1;
         if($page>$total){
             echo "<script>location.href='dashboard.php'</script>";

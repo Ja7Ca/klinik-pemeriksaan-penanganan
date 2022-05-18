@@ -7,6 +7,10 @@ if(isset($_GET['page'])){
 }
 $data = query("select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok from ugd join dokter on ugd.kode_dok=dokter.kode_dok join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=ugd.noreg limit 10 offset $page");
 ?>
+<div class="text-right">
+<a href="print-ugd.php" target="_blank" class="btn btn-warning text-white">
+    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
+</div>
 <table class="table table-striped mt-5">
     <thead>
         <tr>
@@ -15,7 +19,6 @@ $data = query("select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok f
             <th scope="col">Pasien</th>
             <th scope="col">Cara Masuk</th>
             <th scope="col">Dokter</th>
-            <th scope="col">Cetak</th>
         </tr>
     </thead>
     <tbody>
@@ -26,9 +29,6 @@ $data = query("select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok f
                 <td> <?= "{$dt['no_rm']} -- {$dt['nama_pasien']}" ?></td>
                 <td> <?= $dt['cara_masuk'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
-                <td><a href="print-ugd.php?id=<?= $dt['no_ugd']?>" target="_blank" class="btn btn-warning text-white">
-                    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
-                </td>
             </tr>
         <?php } ?>
     </tbody>

@@ -7,7 +7,11 @@ if(isset($_GET['page'])){
 }
 $data = query("select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat_inap join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar limit 10 offset $page");
 ?>
-<table class="table table-striped">
+<div class="text-right">
+<a href="print-ranap.php" target="_blank" class="btn btn-warning text-white">
+    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
+</div>
+<table class="table table-striped mt-3">
     <thead>
         <tr>
             <th scope="col">No Rawat Inap</th>
@@ -15,7 +19,6 @@ $data = query("select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat
             <th scope="col">Cara Masuk</th>
             <th scope="col">Dokter</th>
             <th scope="col">Kamar</th>
-            <th scope="col">Cetak</th>
         </tr>
     </thead>
     <tbody>
@@ -26,9 +29,6 @@ $data = query("select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat
                 <td> <?= $dt['cara_masuk'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td> <?= "{$dt['kode_kamar']} -- {$dt['nama_kamar']}" ?></td>
-                <td><a href="print-ranap.php?id=<?= $dt['no_ranap']?>" target="_blank" class="btn btn-warning text-white">
-                    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
-                </td>
             </tr>
         <?php } ?>
     </tbody>

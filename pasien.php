@@ -1,9 +1,17 @@
 <h1>Tabel Pasien</h1>
 <?php
-$data = query('select * from pasien');
+    if(isset($_POST['submit'])&& $_POST['key'] !== ""){
+        $data = query("select * from pasien where no_rm like '%{$_POST['key']}%' or nama_pasien like '%{$_POST['key']}%' or alamat like '%{$_POST['key']}%'");
+    } else {
+        $data = query("select * from pasien");
+    }
 ?>
 <a href="dashboard.php?tab=formPasien" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     Pasien</a>
+<form method="post" class="text-right">
+    <input type="text" name="key" placeholder="'NO RM', 'Nama', 'Alamat'">
+    <input type="submit" name="submit" value="Cari" class="btn btn-primary">
+</form>
 <table class="table table-striped">
     <thead>
         <tr>

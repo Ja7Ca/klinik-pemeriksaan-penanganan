@@ -7,6 +7,10 @@ if(isset($_GET['page'])){
 }
 $data = query("select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from rawat_jalan join dokter on rawat_jalan.kode_dok=dokter.kode_dok join poliklinik on rawat_jalan.kode_poli=poliklinik.kode_poli limit 10 offset $page");
 ?>
+<div class="text-right">
+<a href="print-rajal.php" target="_blank" class="btn btn-warning text-white">
+    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
+</div>
 <table class="table table-striped mt-5">
     <thead>
         <tr>
@@ -14,7 +18,6 @@ $data = query("select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from 
             <th scope="col">No Registrasi</th>
             <th scope="col">Dokter</th>
             <th scope="col">Poliklinik</th>
-            <th scope="col">Cetak</th>
         </tr>
     </thead>
     <tbody>
@@ -24,9 +27,6 @@ $data = query("select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from 
                 <td> <?= $dt['noreg'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td> <?= "{$dt['kode_poli']} -- {$dt['nama_poli']}" ?></td>
-                <td><a href="print-rajal.php?id=<?= $dt['no_rajal']?>" target="_blank" class="btn btn-warning text-white">
-                    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
-                </td>
             </tr>
         <?php } ?>
     </tbody>
