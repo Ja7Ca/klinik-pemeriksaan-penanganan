@@ -8,7 +8,14 @@ if(isset($_GET['page'])){
 $data = query("select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok from ugd join dokter on ugd.kode_dok=dokter.kode_dok join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=ugd.noreg limit 10 offset $page");
 ?>
 <div class="text-right">
-<a href="print-ugd.php" target="_blank" class="btn btn-warning text-white">
+<?php
+    if(isset($_GET['page'])){
+        $tab = $_GET['page'];
+    } else {
+        $tab = 1;
+    }        
+?>
+<a href="print-ugd.php?page=<?= $tab ?>" target="_blank" class="btn btn-warning text-white">
     <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
 </div>
 <table class="table table-striped mt-5">

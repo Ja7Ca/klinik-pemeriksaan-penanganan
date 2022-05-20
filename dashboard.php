@@ -18,7 +18,10 @@
                     <!-- <i class="fa-solid fa-hospital" style="font-size:30px; color: black"></i> -->
                     <img src="asset/logo.png" alt="" width="60">
                 </div>
-                <p class="text-dark fw-bold m-0 pl-3" style="font-size:20px;">Klinik Dokter Ida</p>
+                <div class="text-center">
+                    <p class="text-dark fw-bold m-0 pl-3" style="font-size:20px;">Klinik Dokter Ida</p>
+                    <h6 class="text-dark fw-bold m-0 pl-3" style="font-size:12px; font-style: italic">"Tulus Ikhlas Melayani"</h6>
+                </div>
             </div>
         </a>
         <a href="dashboard.php?tab=pasien" class="text-decoration-none">

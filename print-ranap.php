@@ -11,10 +11,16 @@
 <body class="p-3 d-flex flex-column align-items-center">
 <h1 class="text-center">Laporan Kunjungan Pasien Rawat Inap</h1>
     <h3 class="text-center">Klinik Dokter Ida Jatisrono</h3>
+    <p class="text-center">Utara Masjid Nurul Huda Jatisrono RT 02 / RW 03, Jatisrono, Wonogiri</p>
     <?php
         require "functions.php";
+        if(isset($_GET['page'])){
+            $page = ($_GET['page']-1)*30;
+        } else {
+            $page = 0;
+        }
         $i = 1;
-        $data = query("select rawat_inap.*, pendaftaran.*, pasien.*, dokter.nama_dok, kamar.nama_kamar from rawat_inap join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=rawat_inap.noreg join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar");
+        $data = query("select rawat_inap.*, pendaftaran.*, pasien.*, dokter.nama_dok, kamar.nama_kamar from rawat_inap join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=rawat_inap.noreg join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar limit 30 offset $page");
     ?>
 <table class="table table-striped mt-5 w-100">
     <thead>

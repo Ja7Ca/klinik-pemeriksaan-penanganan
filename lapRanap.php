@@ -8,7 +8,14 @@ if(isset($_GET['page'])){
 $data = query("select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat_inap join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar limit 10 offset $page");
 ?>
 <div class="text-right">
-<a href="print-ranap.php" target="_blank" class="btn btn-warning text-white">
+<?php
+    if(isset($_GET['page'])){
+        $tab = $_GET['page'];
+    } else {
+        $tab = 1;
+    }        
+    ?>
+<a href="print-ranap.php?page=<?= $tab ?>" target="_blank" class="btn btn-warning text-white">
     <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
 </div>
 <table class="table table-striped mt-3">
