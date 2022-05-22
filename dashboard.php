@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    session_start();
+    
+    if (!$_SESSION['status_login']) {
+        echo "
+            <script>
+                window.location='logout.php'
+            </script>
+        ";
+    }
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -167,19 +177,15 @@
         </div>
     </section>
     <section id="content" class="position-relative">
-        <nav class="navbar navbar-dark bg-dark justify-content-between mb-4">
-            <?php
-                if(isset($_GET['tab'])){
-                    $tab = $_GET['tab'];
-                } else {
-                    $tab = 'Dashboard';
-                }
-            ?>
-            <a class="navbar-brand" style="color:white;"><?= $tab ?></a>
+        <nav class="navbar navbar-dark bg-dark d-flex justify-content-between mb-4">
+            <div>
+
+            </div>
+            <a class="navbar-brand text-center" style="color:white; font-weight: bold;">SISTEM INFORMASI PENDAFTARAN PASIEN KLINIK DOKTER IDA</a>
             <div class="dropdown">
                 <button class="btn btn-light my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-shield-halved pr-3"></i>Admin</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Log Out</a>
+                    <a class="dropdown-item" href="logout.php">Log Out</a>
                 </div>
             </div>
         </nav>
