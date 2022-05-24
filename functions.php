@@ -430,3 +430,78 @@ function editPemeriksaan(){
     $hasil = mysqli_query($conn,$query_edit);
     return $hasil;
 }
+
+function testRajal(){
+    global $conn;
+
+    $noreg = $_POST['noreg'];
+    $tglreg = $_POST['tglreg'];
+    $no_rm = $_POST['no_rm'];
+    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    $jenis_pasien = $_POST['jenis_pasien'];
+    $no_rajal = $_POST['no_rajal'];
+    $kode_dok = $_POST['kode_dok'];
+    $kode_poli = $_POST['kode_poli'];
+
+    $query_insert = "insert into pendaftaran values ('$noreg', '$tglreg', '$no_rm', '$nama_pasien', '$jenis_pasien', 'Rawat Jalan')";
+
+    $hasil = mysqli_query($conn,$query_insert);
+    if($hasil){
+        $query_insert = "insert into rawat_jalan values ('$no_rajal', '$noreg', '$kode_dok', '$kode_poli')";
+        $hasil = mysqli_query($conn,$query_insert);
+        return $hasil;
+    }
+    return false;
+}
+
+function testRanap(){
+    global $conn;
+
+    $noreg = $_POST['noreg'];
+    $tglreg = $_POST['tglreg'];
+    $no_rm = $_POST['no_rm'];
+    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    $jenis_pasien = $_POST['jenis_pasien'];
+    $no_ranap = $_POST['no_ranap'];
+    $cara_masuk = $_POST['cara_masuk'];
+    $kode_dok = $_POST['kode_dok'];
+    $kode_kamar = $_POST['kode_kamar'];
+
+    $query_insert = "insert into pendaftaran values ('$noreg', '$tglreg', '$no_rm', '$nama_pasien', '$jenis_pasien', 'Rawat Inap')";
+
+    $hasil = mysqli_query($conn,$query_insert);
+    if($hasil){
+        $query_insert = "insert into rawat_inap values ('$no_ranap', '$noreg', '$cara_masuk', '$kode_dok', '$kode_kamar')";
+        $hasil = mysqli_query($conn,$query_insert);
+        if($hasil){
+            $query_update_kamar = "update kamar set no_rm='$no_rm' where kode_kamar='$kode_kamar'";
+            $hasil = mysqli_query($conn,$query_update_kamar);
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+function testUgd(){
+    global $conn;
+
+    $noreg = $_POST['noreg'];
+    $tglreg = $_POST['tglreg'];
+    $no_rm = $_POST['no_rm'];
+    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    $jenis_pasien = $_POST['jenis_pasien'];
+    $no_ugd = $_POST['no_ugd'];
+    $cara_masuk = $_POST['cara_masuk'];
+    $kode_dok = $_POST['kode_dok'];
+
+    $query_insert = "insert into pendaftaran values ('$noreg', '$tglreg', '$no_rm', '$nama_pasien', '$jenis_pasien', 'UGD')";
+
+    $hasil = mysqli_query($conn,$query_insert);
+    if($hasil){
+        $query_insert = "insert into ugd values ('$no_ugd', '$noreg', '$cara_masuk', '$kode_dok')";
+        $hasil = mysqli_query($conn,$query_insert);
+        return $hasil;
+    }
+    return false;
+}

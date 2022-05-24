@@ -1,9 +1,13 @@
-<h1>Tabel Pasien</h1>
+<h1>Tabel Pendaftaran</h1>
 <?php
 $data = query('select pendaftaran.*, pasien.nama_pasien from pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm');
 ?>
-<a href="dashboard.php?tab=formPendaftaran" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
-    Pendaftaran</a>
+<a href="dashboard.php?tab=formRajal" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
+    Rawat Jalan</a>
+<a href="dashboard.php?tab=formRanap" class="btn btn-warning pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
+    Rawat Inap</a>
+<a href="dashboard.php?tab=formUgd" class="btn btn-secondary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
+    UGD</a>
 <table class="table table-striped">
     <thead>
         <tr>

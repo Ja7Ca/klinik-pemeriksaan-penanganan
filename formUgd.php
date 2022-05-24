@@ -1,31 +1,34 @@
-<h1>Tambah UGD</h1>
-<form action="" method="post" class="mt-4">
+<h1>Tambah Rawat Jalan</h1>
+<form action="" method="post" class="my-4">
     <div class="form-group">
-        <label for="no_ugd">No UGD</label>
-        <input type="number" class="form-control" name="no_ugd" value="" maxlength="6" required>
+        <label for="noreg">No Register</label>
+        <input type="number" class="form-control" name="noreg" value="" maxlength="6" required>
+    </div>
+    <div class="form-group">
+        <label for="tglreg">Tanggal</label>
+        <input type="date" class="form-control" name="tglreg" required>
     </div>
     <div class="form-group">
         <?php
-            $data_noreg = query("select noreg from pendaftaran where status_pasien='UGD'");
-            $list_noreg = "";
-            foreach($data_noreg as $noreg){
-                if(query("select noreg from ugd where noreg='{$noreg['noreg']}'")==NULL){
-                    $list_noreg = "$list_noreg'{$noreg['noreg']}',";
-                }
-            }
-            if($list_noreg !== ""){
-                $noreg = substr($list_noreg, 0, strlen($list_noreg)-1);
-                $noreg = query("select noreg from pendaftaran where noreg in ($noreg)");
-            } else {
-                $noreg = query("select noreg from pendaftaran where noreg in (NULL)");
-            }
+            $data_norm = query("SELECT * FROM pasien");
         ?>
-        <label for="noreg">No Register</label>
-        <select name="noreg" class="form-control">
-            <?php foreach ($noreg as $reg) {?>
-            <option value="<?= $reg['noreg'] ?>"><?= $reg['noreg'] ?></option>
-            <?php } ?>
+        <label for="no_rm">NO Rekam Medis</label>
+        <select name="no_rm" class="form-control">
+            <?php foreach($data_norm as $norm) {?>
+            <option value="<?= $norm['no_rm'] ?>"><?= "{$norm['no_rm']} -- {$norm['nama_pasien']}" ?></option>
+                <?php } ?>
         </select>
+    </div>
+    <div class="form-group">
+        <label for="jenis_pasien">Jenis Pasien</label>
+        <select name="jenis_pasien" class="form-control">
+            <option value="Pasien Baru">Pasien Baru</option>
+            <option value="Pasien Lama">Pasien Lama</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="no_ugd">No UGD</label>
+        <input type="number" class="form-control" name="no_ugd" value="" maxlength="6" required>
     </div>
     <div class="form-group">
         <label for="cara_masuk">Cara Masuk</label>
@@ -50,12 +53,12 @@
 
 <?php
     if(isset($_POST['submit'])){
-        if(tambahUgd()){
-            echo "<script>alert('Tambah UGD Berhasil')
-                    location.href = 'dashboard.php?tab=ugd'
+        if(testUgd()){
+            echo "<script>alert('Tambah Pendaftaran Berhasil')
+                    location.href = 'dashboard.php?tab=pendaftaran'
             </script>";
         } else {
-            echo "<script>alert('Tambah UGD Gagal')</script>";
+            echo "<script>alert('Tambah Pendaftaran Gagal')</script>";
         }
     }
 ?>
