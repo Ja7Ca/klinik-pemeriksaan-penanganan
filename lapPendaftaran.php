@@ -36,7 +36,13 @@ $data = query("select pendaftaran.*, pasien.nama_pasien, pasien.jkel, pasien.ala
                 <td> <?= $dt['tglreg'] ?></td>
                 <td> <?= $dt['no_rm'] ?></td>
                 <td> <?= $dt['nama_pasien'] ?></td>
-                <td> <?= $dt['jkel'] ?></td>
+                <td><?php 
+                    if($dt["jkel"] == "L"){
+                        echo "Laki-laki";
+                    } else {
+                        echo "Perempuan";
+                    }
+                ?></td>
                 <td> <?= $dt['alamat'] ?></td>
                 <td> <?= $dt['jenis_pasien'] ?></td>
                 <td> <?= $dt['status_pasien'] ?></td>
