@@ -1,4 +1,4 @@
-<h1>Tambah Rawat Jalan</h1>
+<h1>Tambah Rawat Inap</h1>
 <form action="" method="post" class="my-4">
     <div class="form-group">
         <label for="noreg">No Register</label>
