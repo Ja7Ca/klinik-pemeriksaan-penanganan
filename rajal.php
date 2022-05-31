@@ -1,6 +1,6 @@
 <h1>Tabel Rawat Jalan</h1>
 <?php
-$data = query('select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from rawat_jalan join dokter on rawat_jalan.kode_dok=dokter.kode_dok join poliklinik on rawat_jalan.kode_poli=poliklinik.kode_poli');
+$data = query('select rawat_jalan.*, pendaftaran.tglreg, pendaftaran.no_rm, dokter.nama_dok, poliklinik.nama_poli from rawat_jalan join pendaftaran on rawat_jalan.noreg=pendaftaran.noreg join dokter on rawat_jalan.kode_dok=dokter.kode_dok join poliklinik on rawat_jalan.kode_poli=poliklinik.kode_poli');
 ?>
 <a href="dashboard.php?tab=formRajal" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     Rawat Jalan</a>
@@ -9,6 +9,8 @@ $data = query('select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from 
         <tr>
             <th scope="col">No Rawat Jalan</th>
             <th scope="col">No Registrasi</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">No RM</th>
             <th scope="col">Dokter</th>
             <th scope="col">Poliklinik</th>
             <th scope="col">Keterangan</th>
@@ -19,6 +21,8 @@ $data = query('select rawat_jalan.*, dokter.nama_dok, poliklinik.nama_poli from 
             <tr>
                 <td> <?= $dt['no_rajal'] ?></td>
                 <td> <?= $dt['noreg'] ?></td>
+                <td> <?= $dt['tglreg'] ?></td>
+                <td> <?= $dt['no_rm'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td> <?= "{$dt['kode_poli']} -- {$dt['nama_poli']}" ?></td>
                 <td>

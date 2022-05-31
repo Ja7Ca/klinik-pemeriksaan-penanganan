@@ -1,6 +1,6 @@
 <h1>Tabel UGD</h1>
 <?php
-$data = query('select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok from ugd join dokter on ugd.kode_dok=dokter.kode_dok join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=ugd.noreg');
+$data = query('select ugd.*, pendaftaran.tglreg, pendaftaran.no_rm, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok from ugd join dokter on ugd.kode_dok=dokter.kode_dok join (pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm) on pendaftaran.noreg=ugd.noreg');
 ?>
 <a href="dashboard.php?tab=formUgd" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah UGD</a>
 <table class="table table-striped">
@@ -8,7 +8,8 @@ $data = query('select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok f
         <tr>
             <th scope="col">No UGD</th>
             <th scope="col">No Registrasi</th>
-            <th scope="col">Pasien</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">No RM</th>
             <th scope="col">Cara Masuk</th>
             <th scope="col">Dokter</th>
             <th scope="col">Keterangan</th>
@@ -19,7 +20,9 @@ $data = query('select ugd.*, pasien.no_rm, pasien.nama_pasien, dokter.nama_dok f
             <tr>
                 <td> <?= $dt['no_ugd'] ?></td>
                 <td> <?= $dt['noreg'] ?></td>
-                <td> <?= "{$dt['no_rm']} -- {$dt['nama_pasien']}" ?></td>
+                <td> <?= $dt['tglreg'] ?></td>
+                <td> <?= $dt['no_rm'] ?></td>
+                <!-- <td> <?php "{$dt['no_rm']} -- {$dt['nama_pasien']}" ?></td> -->
                 <td> <?= $dt['cara_masuk'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td>

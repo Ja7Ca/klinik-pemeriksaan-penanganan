@@ -1,6 +1,7 @@
 <h1>Tabel Pendaftaran</h1>
 <?php
 $data = query('select pendaftaran.*, pasien.nama_pasien from pendaftaran join pasien on pendaftaran.no_rm=pasien.no_rm');
+$i=1;
 ?>
 <a href="dashboard.php?tab=formRajal" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     Rawat Jalan</a>
@@ -11,6 +12,7 @@ $data = query('select pendaftaran.*, pasien.nama_pasien from pendaftaran join pa
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">No</th>
             <th scope="col">No Register</th>
             <th scope="col">Tanggal</th>
             <th scope="col">No Rekam Medis</th>
@@ -23,6 +25,7 @@ $data = query('select pendaftaran.*, pasien.nama_pasien from pendaftaran join pa
     <tbody>
         <?php foreach ($data as $dt) { ?>
             <tr>
+                <td> <?= $i++ ?></td>
                 <td> <?= $dt['noreg'] ?></td>
                 <td> <?= $dt['tglreg'] ?></td>
                 <td> <?= $dt['no_rm'] ?></td>

@@ -1,6 +1,6 @@
 <h1>Tabel Rawat Inap</h1>
 <?php
-$data = query('select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat_inap join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar');
+$data = query('select rawat_inap.*, pendaftaran.tglreg, pendaftaran.no_rm, dokter.nama_dok, kamar.nama_kamar from rawat_inap join pendaftaran on rawat_inap.noreg=pendaftaran.noreg join dokter on rawat_inap.kode_dok=dokter.kode_dok join kamar on rawat_inap.kode_kamar=kamar.kode_kamar');
 ?>
 <a href="dashboard.php?tab=formRanap" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     Rawat Inap</a>
@@ -9,6 +9,8 @@ $data = query('select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat
         <tr>
             <th scope="col">No Rawat Inap</th>
             <th scope="col">No Registrasi</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">No RM</th>
             <th scope="col">Cara Masuk</th>
             <th scope="col">Dokter</th>
             <th scope="col">Kamar</th>
@@ -20,6 +22,8 @@ $data = query('select rawat_inap.*, dokter.nama_dok, kamar.nama_kamar from rawat
             <tr>
                 <td> <?= $dt['no_ranap'] ?></td>
                 <td> <?= $dt['noreg'] ?></td>
+                <td> <?= $dt['tglreg'] ?></td>
+                <td> <?= $dt['no_rm'] ?></td>
                 <td> <?= $dt['cara_masuk'] ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td> <?= "{$dt['kode_kamar']} -- {$dt['nama_kamar']}" ?></td>
