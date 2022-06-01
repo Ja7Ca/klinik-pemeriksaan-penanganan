@@ -1,13 +1,14 @@
 <h1>Tabel Rawat Jalan</h1>
 <?php
 $data = query('select rawat_jalan.*, pendaftaran.tglreg, pendaftaran.no_rm, dokter.nama_dok, poliklinik.nama_poli from rawat_jalan join pendaftaran on rawat_jalan.noreg=pendaftaran.noreg join dokter on rawat_jalan.kode_dok=dokter.kode_dok join poliklinik on rawat_jalan.kode_poli=poliklinik.kode_poli');
+$i = 1;
 ?>
 <a href="dashboard.php?tab=formRajal" class="btn btn-primary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     Rawat Jalan</a>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">No Rawat Jalan</th>
+            <th scope="col">No</th>
             <th scope="col">No Registrasi</th>
             <th scope="col">Tanggal</th>
             <th scope="col">No RM</th>
@@ -19,7 +20,7 @@ $data = query('select rawat_jalan.*, pendaftaran.tglreg, pendaftaran.no_rm, dokt
     <tbody>
         <?php foreach ($data as $dt) { ?>
             <tr>
-                <td> <?= $dt['no_rajal'] ?></td>
+                <td> <?= $i++ ?></td>
                 <td> <?= $dt['noreg'] ?></td>
                 <td> <?= $dt['tglreg'] ?></td>
                 <td> <?= $dt['no_rm'] ?></td>
