@@ -28,7 +28,7 @@
                 $noreg = query("select noreg from pendaftaran where noreg in (NULL)");
             }
         ?>
-        <label for="noreg">No Register</label>
+        <!-- <label for="noreg">No Register</label>
         <select name="noreg" class="form-control">
             <?php foreach ($noreg as $reg) {?>
             <option value="<?= $reg['noreg'] ?>"
@@ -38,6 +38,21 @@
                 }
             ?>
             ><?= $reg['noreg'] ?></option>
+            <?php } ?>
+        </select> -->
+        <label for="noreg">Pasien</label>
+        <select name="noreg" class="form-control">
+            <?php    
+                foreach ($noreg as $reg) {
+                    $data_pasien = query("select noreg, no_rm, nama_pasien from pendaftaran where noreg='{$reg['noreg']}'")[0];       
+            ?>    
+            <option value="<?= $data_pasien['noreg'] ?>"
+            <?php
+                if($reg['noreg'] == $periksa['noreg']) {
+                    echo 'selected';
+                }
+            ?>
+            ><?= "{$data_pasien['no_rm']} -- {$data_pasien['nama_pasien']}" ?></option>
             <?php } ?>
         </select>
     </div>

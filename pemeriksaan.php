@@ -8,7 +8,7 @@ $data = query('select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
     <thead>
         <tr>
             <th scope="col">Tanggal Periksa</th>
-            <th scope="col">No Register</th>
+            <!-- <th scope="col">No Register</th> -->
             <th scope="col">Pasien</th>
             <th scope="col">Dokter</th>
             <th scope="col">Anamnesa</th>
@@ -24,7 +24,7 @@ $data = query('select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
         <?php foreach ($data as $dt) { ?>
             <tr>
                 <td> <?= $dt['tgl_periksa'] ?></td>
-                <td> <?= $dt['noreg'] ?></td>
+                <!-- <td> <?= $dt['noreg'] ?></td> -->
                 <td> <?= "{$dt['no_rm']} -- {$dt['nama_pasien']}" ?></td>
                 <td> <?= "{$dt['kode_dok']} -- {$dt['nama_dok']}" ?></td>
                 <td> <?= $dt['anamnesa'] ?></td>
