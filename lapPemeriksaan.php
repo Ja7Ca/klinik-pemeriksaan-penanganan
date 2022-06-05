@@ -20,6 +20,7 @@ $data = query("select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
             <th scope="col">SH</th>
             <th scope="col">ND</th>
             <th scope="col">Diagnosa</th>
+            <th scope="col">Tindakan</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,7 @@ $data = query("select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
                 <td> <?= $dt['sh'] ?></td>
                 <td> <?= $dt['nd'] ?></td>
                 <td> <?= $dt['diagnosa'] ?></td>
+                <td> <?= $dt['tindakan'] ?></td>
             </tr>
         <?php } ?>
     </tbody>

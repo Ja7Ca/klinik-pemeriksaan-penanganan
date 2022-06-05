@@ -399,7 +399,8 @@ function tambahPemeriksaan(){
     $sh = $_POST['sh'];
     $nd = $_POST['nd'];
     $diagnosa = $_POST['kode_diagnosa'];
-    $tindakan = query("select status_pasien from pendaftaran where noreg='$noreg'")[0]['status_pasien'];
+    $tindakan = $_POST['kode_tindakan'];
+    // $tindakan = query("select status_pasien from pendaftaran where noreg='$noreg'")[0]['status_pasien'];
 
     $query_insert = "insert into pemeriksaan values ('$no_pemeriksaan', '$tgl_periksa', '$noreg', '$no_rm', '$kode_dok', '$anamnesa', '$tb', '$bb', '$td', '$sh', '$nd', '$diagnosa', '$tindakan')";
 
@@ -422,7 +423,8 @@ function editPemeriksaan(){
     $sh = $_POST['sh'];
     $nd = $_POST['nd'];
     $diagnosa = $_POST['kode_diagnosa'];
-    $tindakan = query("select status_pasien from pendaftaran where noreg='$noreg'")[0]['status_pasien'];
+    $tindakan = $_POST['kode_tindakan'];
+    // $tindakan = query("select status_pasien from pendaftaran where noreg='$noreg'")[0]['status_pasien'];
 
     $query_edit = "update pemeriksaan set tgl_periksa='$tgl_periksa', noreg='$noreg', no_rm='$no_rm', kode_dok='$kode_dok', anamnesa='$anamnesa', tb='$tb', bb='$bb', td='$td', sh='$sh', nd='$nd', diagnosa='$diagnosa', tindakan='$tindakan' where no_periksa='$no_pemeriksaan'";
     var_dump($query_edit);

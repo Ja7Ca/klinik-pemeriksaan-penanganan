@@ -17,6 +17,7 @@ $data = query('select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
             <th scope="col">SH</th>
             <th scope="col">ND</th>
             <th scope="col">Diagnosa</th>
+            <th scope="col">Tindakan</th>
             <th scope="col">Keterangan</th>
         </tr>
     </thead>
@@ -33,6 +34,7 @@ $data = query('select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pe
                 <td> <?= $dt['sh'] ?></td>
                 <td> <?= $dt['nd'] ?></td>
                 <td> <?= $dt['diagnosa'] ?></td>
+                <td> <?= $dt['tindakan'] ?></td>
                 <td>
                     <a href="dashboard.php?tab=editPemeriksaan&id=<?= $dt['no_periksa'] ?>" class="btn btn-success pl-3 py-0"><i class="fa-solid fa-pen pr-2"></i>Edit</a>
                     <a href="dashboard.php?tab=deletePemeriksaan&id=<?= $dt['no_periksa'] ?>" class="btn btn-danger pl-3 py-0" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa-solid fa-trash pr-2"></i>Delete</a>

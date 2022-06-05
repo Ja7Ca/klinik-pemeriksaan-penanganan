@@ -86,6 +86,17 @@
             <?php } ?>
         </select>
     </div>
+    <div class="form-group">
+        <?php
+            $data_tindakan = query("select * from tindakan");
+        ?>
+        <label for="kode_tindakan">Diagnosa</label>
+        <select name="kode_tindakan" class="form-control">
+            <?php foreach($data_tindakan as $tindakan) {?>
+            <option value="<?= $tindakan['kode_tindakan'] ?>"><?= "{$tindakan['kode_tindakan']} -- {$tindakan['nama_tindakan']}" ?></option>
+            <?php } ?>
+        </select>
+    </div>
     <button type="submit" name="submit" class="btn btn-primary" style="width:150px">Submit</button>
 </form>
 
