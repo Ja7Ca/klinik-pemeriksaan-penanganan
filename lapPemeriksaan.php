@@ -1,12 +1,23 @@
 <h1>Tabel Pemeriksaan</h1>
 <?php
 if(isset($_GET['page'])){
-    $page =($_GET['page']-1)*10;
+    $page =($_GET['page']-1)*30;
 } else {
     $page = "0";
 }
 $data = query("select pemeriksaan.*, pasien.nama_pasien, dokter.nama_dok from pemeriksaan join pasien on pasien.no_rm=pemeriksaan.no_rm join dokter on dokter.kode_dok=pemeriksaan.kode_dok limit 10 offset $page");
 ?>
+<div class="text-right">
+    <?php
+    if(isset($_GET['page'])){
+        $tab = $_GET['page'];
+    } else {
+        $tab = 1;
+    }        
+    ?>
+<a href="print-pemeriksaan.php?page=<?= $tab ?>" target="_blank" class="btn btn-warning text-white">
+    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
+</div>
 <table class="table table-striped mt-5">
     <thead>
         <tr>
