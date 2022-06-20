@@ -40,6 +40,7 @@
                 <td>
                     <a href="dashboard.php?tab=editPasien&norm=<?= $dt['no_rm'] ?>" class="btn btn-success pl-3 py-0"><i class="fa-solid fa-pen pr-2"></i>Edit</a>
                     <a href="dashboard.php?tab=deletePasien&id=<?= $dt['no_rm'] ?>" class="btn btn-danger pl-3 py-0" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa-solid fa-trash pr-2"></i>Delete</a>
+                    <a href="print-kib.php?no_rm=<?= $dt['no_rm'] ?>" target="_blank" class="btn btn-warning pl-3 py-0">Cetak</a>
                 </td>
             </tr>
         <?php } ?>

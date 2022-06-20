@@ -9,6 +9,10 @@ $i=1;
     Rawat Inap</a>
 <a href="dashboard.php?tab=formUgd" class="btn btn-secondary pl-3 py-1 mt-4 mb-4"><i class="fa-solid fa-user-plus pr-2"></i>Tambah
     UGD</a>
+    <div class="text-right mb-3">
+<a href="print-pendaftaran.php?page=1" target="_blank" class="btn btn-warning text-white">
+    <i class="fa-solid fa-print fw-bold mr-3"></i>Cetak</a>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>

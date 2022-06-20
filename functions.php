@@ -435,11 +435,28 @@ function editPemeriksaan(){
 
 function testRajal(){
     global $conn;
+    $pasien = $_POST['pasien'];
+    if($pasien == 'baru'){
+        $data_norm = query("select no_rm from pasien order by no_rm");
+        $last_norm = $data_norm[count($data_norm)-1]['no_rm'];
+        $no_rm = $last_norm + 1;
+        $nama_pasien = $_POST['nama_pasien'];
+        $jenis_kelamin = $_POST['jenis_kelamin'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $agama = $_POST['agama'];
+        $status = $_POST['status'];
+        $alamat = $_POST['alamat'];
+        $telepon = $_POST['telepon'];
+
+        $query_pasien = "insert into pasien values ('$no_rm', '$nama_pasien', '$jenis_kelamin', '$tanggal_lahir', '$agama', '$status', '$alamat', '$telepon')";
+        mysqli_query($conn, $query_pasien);
+    } else {
+        $no_rm = $_POST['no_rm'];
+        $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    }
 
     $noreg = $_POST['noreg'];
     $tglreg = $_POST['tglreg'];
-    $no_rm = $_POST['no_rm'];
-    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
     $jenis_pasien = $_POST['jenis_pasien'];
     $no_rajal = $_POST['no_rajal'];
     $kode_dok = $_POST['kode_dok'];
@@ -458,11 +475,28 @@ function testRajal(){
 
 function testRanap(){
     global $conn;
+    $pasien = $_POST['pasien'];
+    if($pasien == 'baru'){
+        $data_norm = query("select no_rm from pasien order by no_rm");
+        $last_norm = $data_norm[count($data_norm)-1]['no_rm'];
+        $no_rm = $last_norm + 1;
+        $nama_pasien = $_POST['nama_pasien'];
+        $jenis_kelamin = $_POST['jenis_kelamin'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $agama = $_POST['agama'];
+        $status = $_POST['status'];
+        $alamat = $_POST['alamat'];
+        $telepon = $_POST['telepon'];
+
+        $query_pasien = "insert into pasien values ('$no_rm', '$nama_pasien', '$jenis_kelamin', '$tanggal_lahir', '$agama', '$status', '$alamat', '$telepon')";
+        mysqli_query($conn, $query_pasien);
+    } else {
+        $no_rm = $_POST['no_rm'];
+        $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    }
 
     $noreg = $_POST['noreg'];
     $tglreg = $_POST['tglreg'];
-    $no_rm = $_POST['no_rm'];
-    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
     $jenis_pasien = $_POST['jenis_pasien'];
     $no_ranap = $_POST['no_ranap'];
     $cara_masuk = $_POST['cara_masuk'];
@@ -488,10 +522,28 @@ function testRanap(){
 function testUgd(){
     global $conn;
 
+    $pasien = $_POST['pasien'];
+    if($pasien == 'baru'){
+        $data_norm = query("select no_rm from pasien order by no_rm");
+        $last_norm = $data_norm[count($data_norm)-1]['no_rm'];
+        $no_rm = $last_norm + 1;
+        $nama_pasien = $_POST['nama_pasien'];
+        $jenis_kelamin = $_POST['jenis_kelamin'];
+        $tanggal_lahir = $_POST['tanggal_lahir'];
+        $agama = $_POST['agama'];
+        $status = $_POST['status'];
+        $alamat = $_POST['alamat'];
+        $telepon = $_POST['telepon'];
+
+        $query_pasien = "insert into pasien values ('$no_rm', '$nama_pasien', '$jenis_kelamin', '$tanggal_lahir', '$agama', '$status', '$alamat', '$telepon')";
+        mysqli_query($conn, $query_pasien);
+    } else {
+        $no_rm = $_POST['no_rm'];
+        $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
+    }
+
     $noreg = $_POST['noreg'];
     $tglreg = $_POST['tglreg'];
-    $no_rm = $_POST['no_rm'];
-    $nama_pasien = query("select nama_pasien from pasien where no_rm='$no_rm'")[0]['nama_pasien'];
     $jenis_pasien = $_POST['jenis_pasien'];
     $no_ugd = $_POST['no_ugd'];
     $cara_masuk = $_POST['cara_masuk'];
